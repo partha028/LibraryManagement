@@ -1,0 +1,4 @@
+Docker Commands: 
+
+docker-compose build  -- To build the application
+docker-compose up  -- To run the application on docker

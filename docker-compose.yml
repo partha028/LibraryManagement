@@ -1,4 +1,4 @@
-version : '3'
+version: '3'
 
 services: 
      web:
@@ -6,3 +6,18 @@ services:
         command: python manage.py runserver 0.0.0.0:8000
         ports: 
             - 8000:8000
+        depends_on:
+            - mongodb
+        networks:
+            - mynetwork
+    
+     mongodb:
+        image: mongo
+        ports:
+            - 27017:27017
+        networks:
+            - mynetwork
+
+
+networks:
+    mynetwork:

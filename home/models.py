@@ -18,19 +18,11 @@ class AddBook(models.Model):
     subject = models.CharField(max_length=20)
     category = models.CharField(max_length=10)
     id_field = book_collection.find()
-    bookID = 1
-    id_values = [doc['id'] for doc in id_field]
-    bookID = max(id_values) + 1
-    # pipeline = [{"$group": {"_id": None, "max_id": {"$max": {"$toInt": "$id"}}}}]
-    # result = list(book_collection.aggregate(pipeline))
-    # max_id = 1  # Default value if no documents are found
-    # if result and result[0] and 'max_id' in result[0] and result[0]['max_id'] is not None:
-    #     max_id = result[0]['max_id'] + 1
 
     def save(self, *args, **kwargs):
         book_collection = db['Book']
         book_data = {
-            'id' : self.bookID,
+            'id' : self.bookid,
             'user': 1,
             'bookid': self.bookid,
             'bookname': self.bookname,
